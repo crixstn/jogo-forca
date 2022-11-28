@@ -58,6 +58,7 @@ export default function Letras({palavra, setPalavra, palavragame, setPalavragame
         <LetrasContainer>
            {alfabeto.map((l) => 
            <button 
+            data-test="letter"
             className={lselec.includes(l) ? "letraDesabilitada" : desabilitado} 
             disabled={palavra.length === 0 || lselec.includes(l)} 
             onClick={(el) => selecionarLetra(l, el.target)}

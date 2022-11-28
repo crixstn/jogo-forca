@@ -15,29 +15,27 @@ export default function Jogo({palavras, setPalavra, palavragame, setPalavragame,
         setRespostaPalavra("");
         setErros(0)
         setlSelec([])
-        setGame("")
-        
+           
         setPalavra(sortPalavra);
         for(let i = 0; i < sortPalavra.length; i++){
             rendPalavra.push("_ ");
         }
         setPalavragame(rendPalavra);
-        console.log(game);
     }
 
 
     return(
         <Main>
-                <img 
+                <img data-test="game-image"
                 src={`Assets/forca${erros}.png`}
                 />
 
                 <div>
-                    <button onClick={EscolherPalavra}>
+                    <button data-test="choose-word" onClick={EscolherPalavra}>
                         Escolher Palavra
                     </button>
 
-                    <h1 className={respostaPalavra}>
+                    <h1 data-test="word" data-answer={palavragame} className={respostaPalavra}>
                         {palavragame}
                     </h1>
                 </div>

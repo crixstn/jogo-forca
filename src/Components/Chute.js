@@ -30,11 +30,12 @@ export default function Chute({setErros, palavra, setPalavra, chute, setChute, s
                 Ja sei a palavra!
             </h2>
             <input 
+                data-test="guess-input"
                 disabled={palavra.length === 0}
                 value={chute}
                 onChange={(e) => setChute(e.target.value)}
             ></input>
-            <button onClick={Chutar} disabled={palavra.length === 0}>
+            <button data-test="guess-button" onClick={Chutar} disabled={palavra.length === 0}>
                 Chutar
             </button>
         </ContainerChute>

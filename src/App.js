@@ -3,6 +3,7 @@ import Jogo from "./Components/Jogo"
 import Letras from "./Components/Letras"
 import Chute from "./Components/Chute"
 import Palavras from "./Components/Palavras";
+import { createGlobalStyle } from 'styled-components'
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
 
   return (
     <>
+    <GlobalStyle/>
     <Jogo
       palavras={Palavras}
 
@@ -31,8 +33,7 @@ export default function App() {
 
       erros={erros}
       setErros={setErros}
-
-      desabilitado={desabilitado}
+      
       setDesabilitado={setDesabilitado}
 
       respostaPalavra={respostaPalavra}
@@ -55,7 +56,6 @@ export default function App() {
       setlCertas={setlCertas}
 
       lselec={lselec}
-      setlSelec={setlSelec}
 
       setRespostaPalavra={setRespostaPalavra}
     />
@@ -77,3 +77,17 @@ export default function App() {
     </>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+  *{
+    box-sizing: border-box;
+  }
+
+  body{
+    background-color: #FFFFFF; 
+    padding: 20px 50px;
+    font-family: 'Roboto';
+ }
+
+
+`

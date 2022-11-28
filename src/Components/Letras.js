@@ -1,6 +1,6 @@
-export default function Letras({palavra, setPalavra, palavragame, setPalavragame, erros, setErros, desabilitado, setDesabilitado, lCertas, setlCertas, lselec, setlSelec, setRespostaPalavra}){
+import styled from 'styled-components';
+export default function Letras({palavra, setPalavra, palavragame, setPalavragame, erros, setErros, desabilitado, setDesabilitado, lCertas, setlCertas, lselec, setRespostaPalavra}){
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const selecLetra = [];
     const attPalavra = [];
 
     const cont = erros + 1
@@ -55,8 +55,7 @@ export default function Letras({palavra, setPalavra, palavragame, setPalavragame
 
 
     return(
-        <div  
-        className="letrasContainer">
+        <LetrasContainer>
            {alfabeto.map((l) => 
            <button 
             className={lselec.includes(l) ? "letraDesabilitada" : desabilitado} 
@@ -65,6 +64,16 @@ export default function Letras({palavra, setPalavra, palavragame, setPalavragame
             >
             {l.toUpperCase()}
             </button>)}
-        </div>
+        </LetrasContainer>
     )
 }
+
+const LetrasContainer = styled.div`
+width: 43%;
+justify-content: center;
+display: flex;
+flex-wrap: wrap;
+margin: 10px auto;
+margin-top: 50px;
+}
+`;

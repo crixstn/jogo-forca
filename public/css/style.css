@@ -43,7 +43,7 @@ body{
     cursor: pointer;
 }
 
-.palavra{
+.jogochild h1{
     font-family: 'Noto Sans';
     font-weight: 700;
     font-size: 50px;
@@ -61,7 +61,7 @@ body{
     margin-top: 50px;
 }
 
-.letra{
+.letraDesabilitada{
     background: #9FAAB5;
     border: 1px solid #7AA7C7;
     border-radius: 3px;
@@ -77,6 +77,24 @@ body{
     font-size: 16px;
     line-height: 19px;
     color: #798A9F;
+}
+
+.letraHabilitada{
+    background: #E1ECF4;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px 5px 0;
+
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #39739D;
     cursor: pointer;
 }
 
@@ -119,4 +137,12 @@ body{
     line-height: 19px;
     color: #3C76A1;
     cursor: pointer;
+}
+
+.acertou {
+    color: #27AE60;
+}
+
+.errou {
+    color: #FF0000;
 }

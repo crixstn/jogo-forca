@@ -1,9 +1,14 @@
-export default function Jogo({palavras, palavra, setPalavra, palavragame, setPalavragame, erros}){
+export default function Jogo({palavras, palavra, setPalavra, palavragame, setPalavragame, setlSelec, erros, setErros, desabilitado, setDesabilitado, respostaPalavra, setRespostaPalavra}){
 
     function EscolherPalavra(){
         let i = Math.floor(Math.random() * palavras.length);
         const sortPalavra = (palavras[i].split(""));
         const rendPalavra = [];
+        setDesabilitado("letraHabilitada");
+        setRespostaPalavra("");
+        setErros(0)
+        setlSelec([])
+        
         setPalavra(sortPalavra);
         for(let i = 0; i < sortPalavra.length; i++){
             rendPalavra.push("_ ");
@@ -24,8 +29,8 @@ export default function Jogo({palavras, palavra, setPalavra, palavragame, setPal
                     <button onClick={EscolherPalavra} className="escolherpalavra">
                         Escolher Palavra
                     </button>
-                    
-                    <h1 className="palavra">
+
+                    <h1 className={respostaPalavra}>
                         {palavragame}
                     </h1>
                 </div>

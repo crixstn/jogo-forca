@@ -1,44 +1,70 @@
-export default function Letras({palavra, palavragame, setPalavragame, erros, setErros}){
+export default function Letras({palavra, setPalavra, palavragame, setPalavragame, erros, setErros, desabilitado, setDesabilitado, lCertas, setlCertas, lselec, setlSelec, setRespostaPalavra}){
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const selecLetra = [];
     const attPalavra = [];
 
-    console.log(palavra)
+    const cont = erros + 1
 
-    function selecionarLetra(l){
+    function selecionarLetra(l, el){
 
-        if(palavra.includes(l)){
-            selecLetra.push(l);
-            console.log(selecLetra);
+        el.classList.remove("letraHabilitada");
+        el.classList.add("letraDesabilitada");
+        el.disabled = desabilitado;
 
-            for(let i = 0; i < palavra.length; i++){
-                if(l === palavra[i]){
-                    palavragame[i] =  l;
-                    attPalavra.push(l);
-                }else{
-                    attPalavra.push(palavragame[i]);
+        console.log(`cont: ${cont}`);
+        if(cont < 6){
+
+            if(palavra.includes(l)){
+                const lAcert = [...lCertas, l];
+                setlCertas(lAcert);
+
+                for(let i = 0; i < palavra.length; i++){
+                    if(l === palavra[i]){
+                        palavragame[i] =  l;
+                        attPalavra.push(l);
+                    }else{
+                        attPalavra.push(palavragame[i]);
+                    }
                 }
+
+                setPalavragame(attPalavra)
+            
+                if(palavra.join("") == attPalavra.join("")){
+                    setPalavra("")
+                    setRespostaPalavra("acertou");
+                    setDesabilitado("letraDesabilitada");
+                    setPalavragame(palavra);
+                }
+
+            }else{
+                setErros(cont);
             }
 
-            setPalavragame(attPalavra)
-
         }else{
-            setErros(erros + 1);
+            setRespostaPalavra("errou");
+            setPalavragame(palavra);
+            setErros(cont);
+            setErros(erros+1);
+            setPalavra("");
+            el.classList.remove("letraHabilitada");
+            el.classList.add("letraDesabilitada");
+            el.disabled = desabilitado;
+            setDesabilitado("letraDesabilitada");
         }
-
     }
 
+
     return(
-        <ul  
-        disabled={palavra.length === 0} 
+        <div  
         className="letrasContainer">
            {alfabeto.map((l) => 
-           <li 
-            className={`letra`} 
-            onClick={() => selecionarLetra(l)}
+           <button 
+            className={lselec.includes(l) ? "letraDesabilitada" : desabilitado} 
+            disabled={palavra.length === 0 || lselec.includes(l)} 
+            onClick={(el) => selecionarLetra(l, el.target)}
             >
-            {l}
-            </li>)}
-        </ul>
+            {l.toUpperCase()}
+            </button>)}
+        </div>
     )
 }

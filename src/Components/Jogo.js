@@ -3,10 +3,6 @@ import styled from 'styled-components';
 
 export default function Jogo({palavras, setPalavra, palavragame, setPalavragame, setlSelec, erros, setErros, setDesabilitado, respostaPalavra, setRespostaPalavra}){
 
-    function RefreshPage(){
-        window.location.reload(true)
-     }
-
     function EscolherPalavra(){
         let i = Math.floor(Math.random() * palavras.length);
         const sortPalavra = (palavras[i].split(""));
@@ -14,8 +10,9 @@ export default function Jogo({palavras, setPalavra, palavragame, setPalavragame,
         setDesabilitado("letraHabilitada");
         setRespostaPalavra("");
         setErros(0)
-        setlSelec([])
+        setlSelec([]);
            
+        console.log(sortPalavra)
         setPalavra(sortPalavra);
         for(let i = 0; i < sortPalavra.length; i++){
             rendPalavra.push("_ ");

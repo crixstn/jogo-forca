@@ -56,6 +56,7 @@ export default function App() {
       setlCertas={setlCertas}
 
       lselec={lselec}
+      setlSelec={setlSelec}
 
       setRespostaPalavra={setRespostaPalavra}
     />

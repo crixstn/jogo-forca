@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export default function Letras({palavra, setPalavra, palavragame, setPalavragame, erros, setErros, desabilitado, setDesabilitado, lCertas, setlCertas, lselec, setRespostaPalavra}){
+export default function Letras({palavra, setPalavra, palavragame, setPalavragame, erros, setErros, desabilitado, setDesabilitado, lselec, setlSelec, setRespostaPalavra}){
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const attPalavra = [];
 
@@ -15,8 +15,8 @@ export default function Letras({palavra, setPalavra, palavragame, setPalavragame
         if(cont < 6){
 
             if(palavra.includes(l)){
-                const lAcert = [...lCertas, l];
-                setlCertas(lAcert);
+                const lAcert = [...lselec, l];
+                setlSelec(lAcert);
 
                 for(let i = 0; i < palavra.length; i++){
                     if(l === palavra[i]){
@@ -57,10 +57,10 @@ export default function Letras({palavra, setPalavra, palavragame, setPalavragame
     return(
         <LetrasContainer>
            {alfabeto.map((l) => 
-           <button 
+           <button key = {l}
             data-test="letter"
             className={lselec.includes(l) ? "letraDesabilitada" : desabilitado} 
-            disabled={palavra.length === 0 || lselec.includes(l)} 
+            disabled={palavra.length === 0 || cont > 6} 
             onClick={(el) => selecionarLetra(l, el.target)}
             >
             {l.toUpperCase()}
